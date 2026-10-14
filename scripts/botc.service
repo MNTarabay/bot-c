@@ -1,0 +1,9 @@
+[Unit]
+Description=Bot C daily heartbeat (paper)
+
+[Service]
+Type=oneshot
+# Set to your clone path; install as a user unit (~/.config/systemd/user/).
+WorkingDirectory=%h/bot-c
+EnvironmentFile=-%h/bot-c/.env
+ExecStart=%h/bot-c/.venv/bin/python %h/bot-c/scripts/heartbeat.py

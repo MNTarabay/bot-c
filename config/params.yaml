@@ -1,0 +1,38 @@
+# Bot C parameters. Values implement CONSTITUTION.md; changing one is a
+# rule change and needs a numbered finding (Article 6).
+
+universe:                 # Article 2
+  top_n: 30
+  floor_usd: 2000000      # min 30-day median daily dollar volume
+  max_age_days: 7         # rebuild weekly
+  min_history_bars: 35
+  stablecoins: [USDT, USDC, DAI, TUSD, PYUSD, EURT, USDG, USDS, RLUSD,
+                FDUSD, USDQ, EURQ, EUR, GBP, AUD, CHF, JPY, CAD, EURC, USDR]
+
+entry:                    # Article 3
+  min_bars: 40
+  ema_span: 20
+  ema_rise_lookback: 5    # EMA20 today vs 5 bars earlier
+  breakout_bars: 20
+  volume_mult: 1.5
+  buy_ratio_min: 0.52
+  max_extension: 0.25
+  buy_ratio_min_trades: 30
+
+exit:                     # Article 4
+  swing_lookback: 3
+  stop_buffer: 0.995      # stop placed 0.5% under the swing low
+  max_risk: 0.12
+  trail_arm_gain: 0.08
+  prove_days: 10
+  prove_gain: 0.05
+
+portfolio:
+  slots: 3
+  alloc: 0.30
+  reentry_days: 5
+  start_equity: 1000.0
+  slippage: 0.001         # paper fills: entry close*(1+s), exit close*(1-s)
+
+api:
+  request_pause_s: 1.05
